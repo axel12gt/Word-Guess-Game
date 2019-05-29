@@ -1,6 +1,4 @@
-var gameOn = true
-// game looper
-do{
+
     // #region array
 var pokemon = ["Bulbasaur", "Ivysaur", "Venusaur",
 "Charmander", "Charmeleon", "Charizard", "Squirtle",
@@ -35,12 +33,18 @@ var chosenPokemon = Math.floor(Math.random()* pokemon.length);
 for (i = 0; i < pokemon[chosenPokemon].length; i++){
     document.writeln("_")
 }
-
-var letterGuessed = prompt
-//#endregion
-
+// splits chosenPokemon string into char array
+var output = Array.from(chosenPokemon);
 
 document.write(pokemon[chosenPokemon]);
 
+//#endregion
+
+
+
+document.onkeyup = function(event){
+    console.log(event);
+    var letterChosen = event.key;
+    console.log(letterChosen);
+    
 }
-while (gameOn);
