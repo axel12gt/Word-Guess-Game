@@ -23,28 +23,44 @@ var pokemon = ["Bulbasaur", "Ivysaur", "Venusaur",
 "Vaporeon", "Jolteon", "Flareon", "Porygon", "Omanyte", "Omastar", "Kabuto", "Kabutops", "Aerodactyl",
 "Snorlax", "Articuno", "Zapdos", "Moltres", "Dratini", "Dragonair", "Dragonite", "Mewtwo", "Mew"
 ];
+
+var alphabet = [ 'a', 'b', 'c', 'd',  'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 
+'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 // #endregion
 
-//#region chosen pokemon logic
+//#region variables
 // chosenPokemon returns a random integer between 0 to length of pokemon -1
 var chosenPokemon = Math.floor(Math.random()* pokemon.length);
 
-// for loop that generates underlines
-for (i = 0; i < pokemon[chosenPokemon].length; i++){
-    document.writeln("_")
-}
+var wins = 0;
+var losses = 0;
+
 // splits chosenPokemon string into char array
-var output = Array.from(chosenPokemon);
+var outputArray = Array.from(chosenPokemon);
+
+var directionsText = document.getElementById("directions-text");
+var userChoiceText = document.getElementById("userchoice-text");
+var guessesRemainingText = document.getElementById("guessesremaining-text");
+var lettersGuessedText = document.getElementById("lettersguessed-text");
+var winsText = document.getElementById("wins-text");
+var lossesText = document.getElementById("losses-text");
+
 
 document.write(pokemon[chosenPokemon]);
 
 //#endregion
 
+// for loop that generates underlines
+for (i = 0; i < pokemon[chosenPokemon].length; i++){
+    document.writeln("_")
+}
 
-
+//#region logic
 document.onkeyup = function(event){
-    console.log(event);
     var letterChosen = event.key;
     console.log(letterChosen);
+
     
 }
+
+//#endregion
