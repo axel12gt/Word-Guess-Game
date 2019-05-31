@@ -22,43 +22,97 @@ var pokemon = ["Bulbasaur", "Ivysaur", "Venusaur",
 "Jynx", "Electabuzz", "Magmar", "Pinsir", "Tauros", "Magikarp", "Gyarados", "Lapras", "Ditto", "Eevee",
 "Vaporeon", "Jolteon", "Flareon", "Porygon", "Omanyte", "Omastar", "Kabuto", "Kabutops", "Aerodactyl",
 "Snorlax", "Articuno", "Zapdos", "Moltres", "Dratini", "Dragonair", "Dragonite", "Mewtwo", "Mew"
-];
+]
 
 var alphabet = [ 'a', 'b', 'c', 'd',  'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 
-'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 // #endregion
 
-//#region variables
-// chosenPokemon returns a random integer between 0 to length of pokemon -1
-var chosenPokemon = Math.floor(Math.random()* pokemon.length);
 
-var wins = 0;
-var losses = 0;
-
-// splits chosenPokemon string into char array
-var outputArray = Array.from(chosenPokemon);
-
-var directionsText = document.getElementById("directions-text");
-var userChoiceText = document.getElementById("userchoice-text");
-var guessesRemainingText = document.getElementById("guessesremaining-text");
-var lettersGuessedText = document.getElementById("lettersguessed-text");
-var winsText = document.getElementById("wins-text");
-var lossesText = document.getElementById("losses-text");
+// chooses a pokemon and initializes the game
+var chosenPokemon = pokemon[Math.floor(Math.random()* pokemon.length)].toLowerCase()
+//sets variable for wins and losses
+var wins = 0
+var losses = 0
+var outputArray = Array.from(chosenPokemon)
+var dash = []
+var lettersLeft = 0
 
 
-document.write(pokemon[chosenPokemon]);
+//#region functions
+function compChoice(){
+    chosenPokemon = pokemon[Math.floor(Math.random()* pokemon.length)]
+}
+
+function directionStartText(){
+    document.querySelector("#directions-text").innerHTML = "Guess letters for the names of the first generation"
+}
+function directionsText(){
+    document.querySelector("#directions-text").innerHTML = ""
+}
+function updateWins(){
+    document.querySelector("#wins").innerHTML = "Wins:" + wins
+}
+function updateLosses(){
+    document.querySelector("#losses").innerHTML ="Losses: " + losses
+}
+function generate(){
+    for (i = 0; i < chosenPokemon.length; i++){
+        dash.push("_")    
+}    
+}
+function updateDashArray(){    
+    document.querySelector("#pokemon").innerHTML = dash
+}
 
 //#endregion
 
-// for loop that generates underlines
-for (i = 0; i < pokemon[chosenPokemon].length; i++){
-    document.writeln("_")
-}
+//#region function calls
+directionStartText()
+updateWins()
+updateLosses()
+generate()
+updateDashArray()
+
+document.write(pokemon[chosenPokemon])
+//#endregion
+
+//#endregion
+
 
 //#region logic
 document.onkeyup = function(event){
-    var letterChosen = event.key;
-    console.log(letterChosen);
+    var letterChosen = event.key
+    console.log(letterChosen)
+
+    if(alphabet.indexOf(letterChosen) !== -1 ){
+        directionsText()
+        if(chosenPokemon.indexOf(letterChosen) !== -1){
+            // here I want something that iterates over the name and checks for duplicates and then removes
+            // the dash at that index and puts letter chosen
+
+            dash.splice(chosenPokemon.indexOf(letterChosen))
+
+            
+
+        }
+
+        else if(){
+            // here if guesses left =0 update losses to 1 and reset guesses left to 9 as well as choose new pokemon name
+            // and reset dash array
+            } else {
+                         // here I want to check if guessesleft = 0 if not update remainguesses to guessesleft --
+            }
+
+
+           
+        
+
+
+
+
+
+    }
 
     
 }
